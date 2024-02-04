@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+    <div id="logwindow">
+        <h1>Welcome to Quill</h1>
+        <% if(locals.newsign){ %>
+            <div class="creds"><label for="fname">Enter your name:</label><br>
+                <input type="text" name="fname" placeholder="Name here" required>
+            </div>
+            <div class="creds"><label for="mail">Email:</label><br>
+                <input type="text" name="mail" placeholder="Email here" required>
+            </div>
+    
+            <div class="creds"><label for="password">Password:</label> <br>
+                <input type="password" name="password" placeholder="Password here" required>
+            </div>
+            <div class="creds">
+                <a href="/logged">
+                    <button id="btn">SignUp</button>
+                </a>
+            </div>
+        <% }else{ %>
+        <div class="creds"><label for="mail">Email:</label><br>
+            <input type="text" name="mail" placeholder="Email here" required>
+        </div>
+
+        <div class="creds"><label for="password">Password:</label> <br>
+            <input type="password" name="password" placeholder="Password here" required>
+        </div>
+        <div class="creds">
+            <a href="/logged">
+                <button id="btn">Login</button>
+            </a>
+        </div>
+        <p class="creds" id="noAcc">Don't have an account? <a href="/signup">Create one!</a></p>
+        <% } %>
+    </div>
+    <%- include("partials/footer.ejs") %>

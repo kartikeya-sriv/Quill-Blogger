@@ -1,0 +1,38 @@
+<%- include("partials/header.ejs") %>
+    <div>
+        <%if(locals.index){%>
+            <div id="writeHead">
+                <h1>Change the Title</h1>
+            </div>
+            <form action="/showUpdate/<%= index%>" method="post">
+                <div class="titleDiv spacing">
+                    <textarea name="blogTitle" id="box1" cols="120" rows="1"
+                        placeholder="Title here"><%=locals.currentTitle%></textarea>
+                </div>
+                <div class="contentDiv spacing">
+                    <textarea name="blogContent" id="box2" cols="120" rows="12"
+                        placeholder="Start writing"><%=locals.currentContent%></textarea>
+                </div>
+                <div class="centralise">
+                    <input id="postbtn" type="submit" name="Update">
+                </div>
+            </form>
+        <%} else{%>
+            <div id="writeHead">
+                <h1>Add a new Blog</h1>
+            </div>
+            <form action="/submit" method="post">
+                <div class="titleDiv spacing">
+                    <textarea name="blogTitle" id="box1" cols="120" rows="1" placeholder="Title here"></textarea>
+                </div>
+                <div class="contentDiv spacing">
+                    <textarea name="blogContent" id="box2" cols="120" rows="12"
+                        placeholder="Start writing"></textarea>
+                </div>
+                <div class="centralise">
+                    <input id="postbtn" type="submit" name="post">
+                </div>
+            </form>
+        <%}%>
+    </div>
+    <%- include("partials/footer.ejs") %>

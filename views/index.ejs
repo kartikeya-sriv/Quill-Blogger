@@ -1,0 +1,71 @@
+<%- include("partials/header.ejs") %>
+    <% if(locals.forUser){ %>
+        <% if(locals.pastBlogs){%>
+            <div class="subhead" id="smallerhead">
+                <h1>Your Blogs</h1>
+            </div>
+            <div class="display">
+                <ul>
+                    <% for(let i=0; i < locals.contentList.length; i++) {%>
+                        <li>
+                            <div class="viewone">
+                                <div class="content">
+                                    <h3>
+                                        <%= locals.titleList[i] %>
+                                    </h3>
+                                    <p>
+                                        <%= locals.contentList[i] %>
+                                    </p>
+                                </div>
+                                <div class="edit">
+                                    <a href="/delete/<%= i %>">
+                                        <button name="<%=i%>" id="delete">Delete</button>
+                                    </a>
+                                    
+                                    <a href="/update/<%= i%>">
+                                        <button name="<%= i%>" id="update">Edit</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr class="division">
+                        </li>
+                        <% } %>
+                    </ul>
+            </div>            
+            <a href="/writeBlog">
+                <button class="bigbtn w-btn">Write a new Blog!</button>
+            </a>
+            <%} else{ %>
+                <div class="newUser">
+                    <div class="subhead">
+                        <h1>Your Blogs</h1>
+                    </div>
+                    <p class="creds" id="noBlog">You don't have any blogs yet :( </p>
+                    <a href="/writeBlog">
+                        <button class="bigbtn">Start writing now!</button>
+                    </a>
+                </div>
+                <% } %>
+                    <% } else{ %>
+                        <div id="join">Join our Blog</div>
+                        <div class="topblogs">
+                            <h1 class="head-1">Top Blogs</h1>
+                            <ul class="bloglist">
+                                <li>
+                                    <h3>ChatGPT Vs Bard: Which is better for coding?</h3>
+                                    We test out which tool is best at code generation, problem solving, refactoring code, providing debugging assistance,...
+                                </li>
+                                <hr class="division">
+                                <li>
+                                    <h3>Cloud computing challenges and opportunities for the public sector</h3>
+                                    A look at the current challenges and opportunities facing public sector organizations as they hope to adopt cloud...
+                                </li>
+                                <hr class="division">
+                                <li>
+                                    <h3>Scrum vs. SAFe: Which Agile framework is right for your team?</h3>
+                                    Scrum vs. SAFe: Making the right choice for powerful organizational change. We’ll explain each framework, their pros...
+                                </li>
+                            </ul>
+                        </div>
+                        <% } %>
+                            <%- include("partials/footer.ejs") %>
